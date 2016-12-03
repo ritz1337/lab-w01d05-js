@@ -20,12 +20,12 @@ Implement the following tasks:
 - [ ] the 'li' should contain a 'span' with a class of 'remove' and the text content 'x'
 - [ ] Appdn the 'li' to 'ul.todos'
 
-### When a user clicks on a todo's span's "x"
-- [ ] remove the todo from the DOM
-
 ### When a user click's on the todo text
 - [ ] add or remove the class "complete"
 - [ ] "complete" should add a line through the text
+
+### When a user clicks on a todo's span's "x"
+- [ ] remove the todo from the DOM
 
 # Bonus 
 
