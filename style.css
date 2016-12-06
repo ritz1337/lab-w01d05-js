@@ -1,0 +1,13 @@
+.complete {
+  text-decoration: line-through;
+}
+
+.remove {
+  float: right ;
+}
+
+.todo {
+  /*overflow: auto;*/
+  width: 50%;
+}
+
