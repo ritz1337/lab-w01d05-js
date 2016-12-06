@@ -1,0 +1,17 @@
+.completed {
+  text-decoration: line-through;
+}
+
+.todo {
+  cursor: pointer;
+}
+
+.remove {
+  transition: all 1s ease;
+  display: inline-block;
+  margin: 1px;
+}
+
+.remove:hover {
+  color: red;
+}
