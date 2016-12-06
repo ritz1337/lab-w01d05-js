@@ -42,10 +42,10 @@ var handleInput = function(evt) {
     return false;
   }
   var val = newTodo.value;
-  // if empty string return false;
   if (!val) {
     return false;
   }
+  // if empty string return false;
   // render to DOM with nodes
   // var todo = renderTodoDOM(val);
   // todos.appendChild(todo);
@@ -60,7 +60,20 @@ var handleInput = function(evt) {
 // wire up the DOM
 newTodo.addEventListener('keyup', handleInput);
 
-
-
+todos.addEventListener('click', function(evt) {
+  console.log('click!');
+  console.log(evt.target); // the el that triggered the evt
+  var el = evt.target;
+  if ( el.classList.contains('todo') ) {
+    // toggle the class done
+    el.classList.toggle('done');
+    return true;
+  }
+  if (el.classList.contains('remove') ) {
+    // remove the whole todo
+    el.parentNode.remove();
+    return true;
+  }
+});
 
 
