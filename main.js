@@ -1,20 +1,13 @@
 // target some DOM nodes
+var $newTodo = document.querySelector('.new-todo');
+var $todos = document.querySelector('.todos');
 
-var newTodo = document.querySelector('.new-todo');
-var todos = document.querySelector('.todos');
-
-// something i'll use later
-var todo;
-
-// rendering a STRING of html
-// add with todos.innerHTML += todo;
+// render a STRING of html to add with todos.innerHTML += todo;
 var renderTodoStr = function(todo) {
   return '<li class="todo">' + todo + '<span class="remove">x</span></li>';
 }
 
-
-// rendering DOM nodes
-// add with todos.appendChild(todo);
+// render DOM nodes to add with todos.appendChild(todo);
 var renderTodoDOM = function(todo) {
   var li = document.createElement('li');
   var span = document.createElement('span');
@@ -35,45 +28,35 @@ var renderTodoDOM = function(todo) {
 // defining event handler
 //  evt.keyCode // number for the character type on the DL
 //  evt.target // what element the event was triggered on
-//  evt.target.value || newTodo.value // value of input element
+//  evt.target.value || $newTodo.value // value of input element
 var handleInput = function(evt) {
-  // if not "return" key return false
+  // if not "return" key don't continue
   if (evt.keyCode !== 13) {
     return false;
   }
-  var val = newTodo.value;
+  var val = $newTodo.value;
+  // if val is empty don't continue
   if (!val) {
     return false;
   }
-  // if empty string return false;
-  // render to DOM with nodes
-  // var todo = renderTodoDOM(val);
-  // todos.appendChild(todo);
-
   // render to DOM with strings
   var todo = renderTodoStr(val);
-  // todos.innerHTML = todos.innerHTML + todo;
   todos.innerHTML += todo;
 }
 
-
-// wire up the DOM
-newTodo.addEventListener('keyup', handleInput);
-
-todos.addEventListener('click', function(evt) {
-  console.log('click!');
-  console.log(evt.target); // the el that triggered the evt
+var handleClick = function(evt) {
   var el = evt.target;
   if ( el.classList.contains('todo') ) {
-    // toggle the class done
     el.classList.toggle('done');
     return true;
   }
   if (el.classList.contains('remove') ) {
     // remove the whole todo
-    el.parentNode.remove();
+    el.parentElement.remove();
     return true;
   }
-});
+}
 
-
+// wire up the DOM
+$newTodo.addEventListener('keyup', handleInput);
+$todos.addEventListener('click', handleClick);
